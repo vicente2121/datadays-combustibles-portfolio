@@ -9,7 +9,7 @@
 | Workspace DEV | `DataDays-FabricApps-Portfolio-DEV` · `0245bb51-e0d1-40f1-b071-fcbbf1d7b155` |
 | Carpeta Fabric | `02-Combustibles` · `b55f8c2f-a9df-4c0f-89f5-7d5f9b391648` |
 | App Rayfin | `datadays-combustibles-portfolio` · `5e3a9b0c-6045-4c8b-9884-7d0997345e65` |
-| Elementos de este caso | `DD02_LH_Combustibles`, `DD02_NB_Silver`, `DD02_NB_Gold`, `DD02_PL_EIA_Precios`, `DD02_SM_PreciosCombustibles`, `DD02_Informe_PreciosCombustibles` |
+| Elementos de este caso | `DD02_LH_Combustibles`, `DD02_NB_Silver`, `DD02_NB_Gold`, `DD02_PL_EIA_Precios`, `DD02_SM_PreciosCombustibles`, `DD02_Informe_PreciosCombustibles`, `datadays_combustibles_portfolio_connector` |
 | Acceso | Fabric SSO; informe integrado por conector delegado al modelo Direct Lake, sin datos propios ni roles de app |
 | Cuenta del desarrollador | `juanvicente@ajmvicente21hotmail.onmicrosoft.com` |
 | Sincronización Git del workspace | Desactivada; las publicaciones se hacen con CLI/API y los repositorios se mantienen separados |
@@ -32,6 +32,7 @@ Solo se crean o modifican los elementos enumerados arriba y la app de esta ficha
 | Pipeline | `55716669-39a9-4fd4-a08e-b0f3297b4b9e` |
 | Modelo Direct Lake | `348baba6-87d8-465e-9a40-ed582b2dbb80` |
 | Informe | `2410449a-d0d7-448d-9dd2-31c1d92a18f6` |
+| Conector Rayfin (UserDataFunction) | `2c09e9a9-9929-43ac-ae8f-4f72f434e6f1` |
 
 ## Informe en la app
 

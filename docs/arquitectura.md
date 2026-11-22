@@ -14,7 +14,8 @@ flowchart LR
   F --> G[Cuatro tablas gold]
   G --> H[DD02_SM_PreciosCombustibles<br/>Direct Lake]
   H --> I[Informe Power BI]
-  H --> J[Informe dentro de la Fabric App]
+  H --> J[Conector Rayfin<br/>DAX delegado]
+  J --> K[Informe dentro de la Fabric App]
 ```
 
 | Tramo | Entrada | Salida | Comprobación |
@@ -39,6 +40,9 @@ erDiagram
 Las cuatro relaciones son activas y de una dirección. La Fabric App y Power BI leen `DD02_SM_PreciosCombustibles`; los materiales originales y las definiciones publicadas están en [`case-source/`](../case-source/) y [`fabric/`](../fabric/).
 
 ## Informe dentro de la Fabric App
+
+El conector Rayfin de este caso consulta el modelo con la identidad delegada del usuario. Rayfin publicó su puente UserDataFunction en la misma carpeta de Fabric; el código de la app y el alias del conector están en este repositorio.
+
 
 La pestaña **Informe** consulta `DD02_SM_PreciosCombustibles` con Rayfin y permisos delegados. Las consultas DAX están en [`packages/frontend/src/queries/report/`](../packages/frontend/src/queries/report/). El panel muestra observaciones, meses, series y el precio mensual promedio; representa doce meses por combustible y compara el último precio disponible de cada serie.
 
