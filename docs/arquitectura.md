@@ -6,13 +6,13 @@ La solución está en la carpeta `02-Combustibles` del [workspace Data Days](htt
 
 ```mermaid
 flowchart LR
-  A[EIA Open Data API\ndos series semanales] --> B[Copy REST\nJSON por RunId]
+  A[EIA Open Data API<br/>dos series semanales] --> B[Copy REST<br/>JSON por RunId]
   B --> C[Files/bronze/eia]
-  C --> D[NB Silver\nMERGE por serie + fecha]
+  C --> D[NB Silver<br/>MERGE por serie + fecha]
   D --> E[silver.precios_combustibles_historico]
-  E --> F[NB Gold\nmes y último precio]
+  E --> F[NB Gold<br/>mes y último precio]
   F --> G[Cuatro tablas gold]
-  G --> H[DD02_SM_PreciosCombustibles\nDirect Lake]
+  G --> H[DD02_SM_PreciosCombustibles<br/>Direct Lake]
   H --> I[Informe Power BI]
   H --> J[Informe dentro de la Fabric App]
 ```
