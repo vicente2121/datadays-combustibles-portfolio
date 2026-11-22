@@ -1,0 +1,9 @@
+expression 'DirectLake - LH_PreciosCombustibles' =
+		let
+		    Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/<WORKSPACE_ID>/<LAKEHOUSE_ID>", [HierarchicalNavigation=true])
+		in
+		    Source
+	lineageTag: ab794caa-21a5-4060-9a48-4d5249087a5f
+
+	annotation PBI_IncludeFutureArtifacts = False
+

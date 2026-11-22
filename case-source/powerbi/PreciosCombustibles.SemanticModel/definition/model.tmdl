@@ -1,0 +1,22 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["DirectLake - LH_PreciosCombustibles"]
+
+annotation __LastRPTime = 134390875493033980
+
+annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb","WebModelingEdit"]
+
+ref table dim_combustible
+ref table dim_mes
+ref table fact_precios_mensuales
+ref table fact_ultimo_precio
+ref table precios_combustibles_historico
+

@@ -1,0 +1,63 @@
+table fact_ultimo_precio
+	lineageTag: db65f905-5e7a-48f8-857a-c0884b1102f4
+	sourceLineageTag: [gold].[fact_ultimo_precio]
+
+	column serie_eia
+		dataType: string
+		lineageTag: 0284dad2-e119-43fa-92bd-1d43cd348fea
+		sourceLineageTag: serie_eia
+		summarizeBy: none
+		sourceColumn: serie_eia
+
+		annotation SummarizationSetBy = Automatic
+
+	column fecha
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2d292533-48a5-4db9-8b26-3bfec0cb281d
+		sourceLineageTag: fecha
+		summarizeBy: none
+		sourceColumn: fecha
+
+		annotation SummarizationSetBy = Automatic
+
+	column precio_usd_galon
+		dataType: double
+		lineageTag: ff4a0cf0-9489-49c8-855c-f2ae26b50834
+		sourceLineageTag: precio_usd_galon
+		summarizeBy: sum
+		sourceColumn: precio_usd_galon
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column precio_anterior_usd_galon
+		dataType: double
+		lineageTag: 8ac8b0e5-7273-44cf-ae91-5596e79d99d0
+		sourceLineageTag: precio_anterior_usd_galon
+		summarizeBy: sum
+		sourceColumn: precio_anterior_usd_galon
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column variacion_semanal_pct
+		dataType: double
+		lineageTag: 74463ee0-fc31-4eef-9f8e-cbe34dde9abb
+		sourceLineageTag: variacion_semanal_pct
+		summarizeBy: sum
+		sourceColumn: variacion_semanal_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_ultimo_precio = entity
+		mode: directLake
+		source
+			entityName: fact_ultimo_precio
+			schemaName: gold
+			expressionSource: 'DirectLake - LH_PreciosCombustibles'
+

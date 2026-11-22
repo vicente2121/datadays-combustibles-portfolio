@@ -1,0 +1,139 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.15.0/schema.json",
+  "name": "b8b9f1ea105aea18e306",
+  "position": {
+    "x": 80,
+    "y": 70,
+    "z": 0,
+    "height": 800,
+    "width": 1700,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_mes"
+                    }
+                  },
+                  "Property": "fecha_mes"
+                }
+              },
+              "queryRef": "dim_mes.fecha_mes",
+              "nativeQueryRef": "fecha_mes",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_combustible"
+                    }
+                  },
+                  "Property": "combustible"
+                }
+              },
+              "queryRef": "dim_combustible.combustible",
+              "nativeQueryRef": "combustible"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_combustible"
+                    }
+                  },
+                  "Property": "Precio mensual promedio"
+                }
+              },
+              "queryRef": "dim_combustible.Precio mensual promedio",
+              "nativeQueryRef": "Precio mensual promedio"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_mes"
+                  }
+                },
+                "Property": "fecha_mes"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "fe47fce19e7909592da4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_mes"
+              }
+            },
+            "Property": "fecha_mes"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "76faaf7334cb9b48019d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_combustible"
+              }
+            },
+            "Property": "Precio mensual promedio"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ef288006cd6033e320c1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_combustible"
+              }
+            },
+            "Property": "combustible"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

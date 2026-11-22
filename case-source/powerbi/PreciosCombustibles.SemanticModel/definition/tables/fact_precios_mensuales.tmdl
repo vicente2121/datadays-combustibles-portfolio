@@ -1,0 +1,95 @@
+table fact_precios_mensuales
+	lineageTag: b8c91ae5-9a27-4ab9-89fe-18ce1761fd7e
+	sourceLineageTag: [gold].[fact_precios_mensuales]
+
+	column serie_eia
+		dataType: string
+		lineageTag: de478c13-ffad-498d-acaf-234de2213d1c
+		sourceLineageTag: serie_eia
+		summarizeBy: none
+		sourceColumn: serie_eia
+
+		annotation SummarizationSetBy = Automatic
+
+	column fecha_mes
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 23f8c1ba-ac18-466a-a210-3ade31bc33e4
+		sourceLineageTag: fecha_mes
+		summarizeBy: none
+		sourceColumn: fecha_mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column precio_promedio_usd_galon
+		dataType: double
+		lineageTag: 7ab3fa70-6214-47bb-b2b8-dbfc13e28e32
+		sourceLineageTag: precio_promedio_usd_galon
+		summarizeBy: sum
+		sourceColumn: precio_promedio_usd_galon
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column precio_minimo_usd_galon
+		dataType: double
+		lineageTag: 798317dd-124c-414a-b40a-c63733327438
+		sourceLineageTag: precio_minimo_usd_galon
+		summarizeBy: sum
+		sourceColumn: precio_minimo_usd_galon
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column precio_maximo_usd_galon
+		dataType: double
+		lineageTag: efc8e034-cf48-4471-9ec8-842d83f59795
+		sourceLineageTag: precio_maximo_usd_galon
+		summarizeBy: sum
+		sourceColumn: precio_maximo_usd_galon
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column semanas_observadas
+		dataType: int64
+		formatString: 0
+		lineageTag: d6f537d6-2a8c-4ad8-9543-82699e9bfccb
+		sourceLineageTag: semanas_observadas
+		summarizeBy: sum
+		sourceColumn: semanas_observadas
+
+		annotation SummarizationSetBy = Automatic
+
+	column precio_mes_anterior_usd_galon
+		dataType: double
+		lineageTag: b86eb9ac-1871-4c79-a1bf-3452e8f12c34
+		sourceLineageTag: precio_mes_anterior_usd_galon
+		summarizeBy: sum
+		sourceColumn: precio_mes_anterior_usd_galon
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column variacion_mensual_pct
+		dataType: double
+		lineageTag: 9c160c10-d985-4ed0-b88c-5ee03c5e0aa3
+		sourceLineageTag: variacion_mensual_pct
+		summarizeBy: sum
+		sourceColumn: variacion_mensual_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_precios_mensuales = entity
+		mode: directLake
+		source
+			entityName: fact_precios_mensuales
+			schemaName: gold
+			expressionSource: 'DirectLake - LH_PreciosCombustibles'
+

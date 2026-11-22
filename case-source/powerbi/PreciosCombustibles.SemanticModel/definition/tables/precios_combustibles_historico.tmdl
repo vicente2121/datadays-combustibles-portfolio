@@ -1,0 +1,107 @@
+table precios_combustibles_historico
+	lineageTag: c4934551-fdf4-43a9-bfff-d2baf366b6fe
+	sourceLineageTag: [silver].[precios_combustibles_historico]
+
+	column serie_eia
+		dataType: string
+		lineageTag: 89fb987a-2337-43b1-931f-f95e1703ef2e
+		sourceLineageTag: serie_eia
+		summarizeBy: none
+		sourceColumn: serie_eia
+
+		annotation SummarizationSetBy = Automatic
+
+	column combustible
+		dataType: string
+		lineageTag: 56adccc1-78ee-46a4-b0a9-37abf017ae1d
+		sourceLineageTag: combustible
+		summarizeBy: none
+		sourceColumn: combustible
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 7828e234-9fe8-4407-a6aa-d5e5bebf9b04
+		sourceLineageTag: region
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column fecha
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f86f4baf-945b-418f-929e-db910f46dc16
+		sourceLineageTag: fecha
+		summarizeBy: none
+		sourceColumn: fecha
+
+		annotation SummarizationSetBy = Automatic
+
+	column precio_usd_galon
+		dataType: double
+		lineageTag: 56cd89bc-a37d-418e-b21b-13d3e065be21
+		sourceLineageTag: precio_usd_galon
+		summarizeBy: sum
+		sourceColumn: precio_usd_galon
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unidad
+		dataType: string
+		lineageTag: 19be62ef-f728-4070-8143-58a6e175c8d4
+		sourceLineageTag: unidad
+		summarizeBy: none
+		sourceColumn: unidad
+
+		annotation SummarizationSetBy = Automatic
+
+	column capturado_en_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1e3f1615-680d-4ae0-add6-fcb47d94a2e9
+		sourceLineageTag: capturado_en_utc
+		summarizeBy: none
+		sourceColumn: capturado_en_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	column archivo_origen
+		dataType: string
+		lineageTag: a2213651-b949-46a9-95ef-f0bc130a9a54
+		sourceLineageTag: archivo_origen
+		summarizeBy: none
+		sourceColumn: archivo_origen
+
+		annotation SummarizationSetBy = Automatic
+
+	column anio
+		dataType: int64
+		formatString: 0
+		lineageTag: 8c94dc97-6a5d-4c0c-9507-f9a7b49ef847
+		sourceLineageTag: anio
+		summarizeBy: sum
+		sourceColumn: anio
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e3c0252-69e9-4a69-aae2-1ef1ba4c99e0
+		sourceLineageTag: mes
+		summarizeBy: sum
+		sourceColumn: mes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition precios_combustibles_historico = entity
+		mode: directLake
+		source
+			entityName: precios_combustibles_historico
+			schemaName: silver
+			expressionSource: 'DirectLake - LH_PreciosCombustibles'
+

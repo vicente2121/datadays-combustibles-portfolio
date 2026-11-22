@@ -1,0 +1,54 @@
+table dim_combustible
+	lineageTag: 0ac01457-84d9-4dc9-a1ec-1caac53ccb04
+	sourceLineageTag: [gold].[dim_combustible]
+
+	measure 'Precio mensual promedio' = AVERAGE('fact_precios_mensuales'[precio_promedio_usd_galon])
+		lineageTag: 55dd3d65-58d2-4bde-b018-fbdb8bc02283
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column serie_eia
+		dataType: string
+		lineageTag: a0eeb05c-a3d7-4b7b-a390-f532fd3173e9
+		sourceLineageTag: serie_eia
+		summarizeBy: none
+		sourceColumn: serie_eia
+
+		annotation SummarizationSetBy = Automatic
+
+	column combustible
+		dataType: string
+		lineageTag: 60cbd921-0bd8-4cbe-8ed2-e7e38e796648
+		sourceLineageTag: combustible
+		summarizeBy: none
+		sourceColumn: combustible
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 05f514bb-58a6-4d60-90de-ebce913c1da4
+		sourceLineageTag: region
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column unidad
+		dataType: string
+		lineageTag: d94cebc1-b7e3-4a59-86d9-8de960bce645
+		sourceLineageTag: unidad
+		summarizeBy: none
+		sourceColumn: unidad
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_combustible = entity
+		mode: directLake
+		source
+			entityName: dim_combustible
+			schemaName: gold
+			expressionSource: 'DirectLake - LH_PreciosCombustibles'
+
