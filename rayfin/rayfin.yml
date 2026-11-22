@@ -30,3 +30,14 @@ services:
     enabled: false
   functions:
     enabled: false
+connectors:
+  - name: fuelmodel
+    type: fabric-semanticmodel
+    config:
+      workspaceId: 0245bb51-e0d1-40f1-b071-fcbbf1d7b155
+      itemId: 348baba6-87d8-465e-9a40-ed582b2dbb80
+    auth:
+      type: delegated
+    version: "1"
+    operations:
+      - name: executeQuery

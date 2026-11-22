@@ -1,0 +1,7 @@
+EVALUATE
+ROW(
+  "Observaciones", COUNTROWS('precios_combustibles_historico'),
+  "Meses", COUNTROWS('dim_mes'),
+  "Series", COUNTROWS('dim_combustible'),
+  "PrecioMensualPromedio", [Precio mensual promedio]
+)

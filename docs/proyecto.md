@@ -10,7 +10,7 @@
 | Carpeta Fabric | `02-Combustibles` · `b55f8c2f-a9df-4c0f-89f5-7d5f9b391648` |
 | App Rayfin | `datadays-combustibles-portfolio` · `5e3a9b0c-6045-4c8b-9884-7d0997345e65` |
 | Elementos de este caso | `DD02_LH_Combustibles`, `DD02_NB_Silver`, `DD02_NB_Gold`, `DD02_PL_EIA_Precios`, `DD02_SM_PreciosCombustibles`, `DD02_Informe_PreciosCombustibles` |
-| Acceso | Fabric SSO; portafolio documental sin datos propios ni roles de app |
+| Acceso | Fabric SSO; informe integrado por conector delegado al modelo Direct Lake, sin datos propios ni roles de app |
 | Cuenta del desarrollador | `juanvicente@ajmvicente21hotmail.onmicrosoft.com` |
 | Sincronización Git del workspace | Desactivada; las publicaciones se hacen con CLI/API y los repositorios se mantienen separados |
 
@@ -33,8 +33,12 @@ Solo se crean o modifican los elementos enumerados arriba y la app de esta ficha
 | Modelo Direct Lake | `348baba6-87d8-465e-9a40-ed582b2dbb80` |
 | Informe | `2410449a-d0d7-448d-9dd2-31c1d92a18f6` |
 
+## Informe en la app
+
+La sección Informe lee el modelo semántico de esta ficha mediante consultas DAX en packages/frontend/src/queries/report/. El acceso se delega al usuario autenticado. El recorrido técnico y las relaciones están en [arquitectura.md](arquitectura.md).
+
 ## Riesgos para producción
 
-- La clave EIA debe aportarse como parámetro seguro al ejecutar el pipeline; nunca se guarda en Git.
+- La clave EIA debe aportarse al ejecutar el pipeline; nunca se guarda en Git. La plantilla usa un parámetro `string` y protege la entrada y salida de Copy, por lo que hay que revisar la visibilidad de parámetros de ejecución antes de un uso productivo.
 - El JSON incluido es una respuesta de ejemplo, no una conexión viva.
 - La visibilidad de los datos del Lakehouse depende de los permisos del workspace; revisar antes de uso productivo.

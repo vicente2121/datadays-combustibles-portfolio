@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4
+  },
+  "encoding": {
+    "y": {
+      "field": "Combustible",
+      "type": "nominal",
+      "title": null
+    },
+    "x": {
+      "field": "UltimoPrecio",
+      "type": "quantitative",
+      "title": "USD por galón",
+      "scale": {
+        "zero": true
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Combustible",
+        "type": "nominal",
+        "title": "Combustible"
+      },
+      {
+        "field": "UltimoPrecio",
+        "type": "quantitative",
+        "title": "Último precio",
+        "format": ".3f"
+      },
+      {
+        "field": "VariacionSemanal",
+        "type": "quantitative",
+        "title": "Variación semanal (%)",
+        "format": ".2f"
+      }
+    ]
+  }
+}

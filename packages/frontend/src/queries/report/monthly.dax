@@ -1,0 +1,10 @@
+EVALUATE
+TOPN(
+  24,
+  SUMMARIZECOLUMNS(
+    'dim_mes'[fecha_mes],
+    'dim_combustible'[combustible],
+    "PrecioPromedio", [Precio mensual promedio]
+  ),
+  'dim_mes'[fecha_mes], DESC
+)

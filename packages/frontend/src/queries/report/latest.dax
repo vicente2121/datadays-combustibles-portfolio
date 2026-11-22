@@ -1,0 +1,6 @@
+EVALUATE
+SUMMARIZECOLUMNS(
+  'dim_combustible'[combustible],
+  "UltimoPrecio", MAX('fact_ultimo_precio'[precio_usd_galon]),
+  "VariacionSemanal", MAX('fact_ultimo_precio'[variacion_semanal_pct])
+)

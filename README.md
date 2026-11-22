@@ -15,6 +15,7 @@ Fabric App tipo portafolio del caso 02 de DP-600: un histórico semanal de gasol
 | [`case-source/powerbi/`](case-source/powerbi/) | PBIP con informe y modelo Direct Lake |
 | [`fabric/`](fabric/) | Copias de despliegue con conexiones e identificadores resueltos |
 | [`case-source/data/`](case-source/data/) | Respuesta EIA de ejemplo, no una fuente viva |
+| [`docs/arquitectura.md`](docs/arquitectura.md) | Flujo fuente → Bronze → Silver → Gold → modelo, con diagramas y relaciones |
 | [`docs/proyecto.md`](docs/proyecto.md) | Workspace, carpeta e inventario de recursos de esta app |
 
 Los artefactos proceden del [repositorio general de Data Days](https://github.com/vicente2121/DATADAYS_DP600/tree/main/charla02/caso_02_historico_precios_combustibles). El workspace de Fabric **no está sincronizado con Git**.
@@ -28,7 +29,7 @@ Los artefactos proceden del [repositorio general de Data Days](https://github.co
 
 ## Reproducción y desarrollo
 
-Para reproducir la ingesta viva se necesita una clave propia de EIA, introducida como parámetro seguro al ejecutar el pipeline. Nunca se guarda en este repositorio. La guía de réplica está en [`case-source/README.md`](case-source/README.md).
+Para reproducir la ingesta viva se necesita una clave propia de EIA, introducida como parámetro de ejecución del pipeline. Nunca se guarda en este repositorio. La guía de réplica está en [`case-source/README.md`](case-source/README.md).
 
 La app requiere Node.js 22.13 o posterior:
 
@@ -40,3 +41,7 @@ npm run dev
 ```
 
 Consulta [`docs/rayfin-template.md`](docs/rayfin-template.md) para los comandos de la plantilla oficial.
+
+## Informe dentro de la Fabric App
+
+La sección **Informe** consulta el modelo semántico publicado con el conector delegado de Rayfin. Muestra cuatro indicadores y dos gráficas basados en consultas DAX verificadas, con estado de carga y errores visibles. Consulta [las consultas y los visuales](packages/frontend/src/queries/report/) y el [mapa de datos](docs/arquitectura.md). El informe de Power BI enlazado arriba ofrece las páginas analíticas completas.

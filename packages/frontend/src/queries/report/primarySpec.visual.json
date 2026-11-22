@@ -1,0 +1,50 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "mark": {
+    "type": "line",
+    "point": true,
+    "strokeWidth": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "Fecha",
+      "type": "temporal",
+      "title": "Mes",
+      "axis": {
+        "format": "%b %Y"
+      }
+    },
+    "y": {
+      "field": "PrecioPromedio",
+      "type": "quantitative",
+      "title": "USD por galón",
+      "scale": {
+        "zero": false
+      }
+    },
+    "color": {
+      "field": "Combustible",
+      "type": "nominal",
+      "title": "Serie"
+    },
+    "tooltip": [
+      {
+        "field": "Fecha",
+        "type": "temporal",
+        "title": "Mes",
+        "format": "%B %Y"
+      },
+      {
+        "field": "Combustible",
+        "type": "nominal",
+        "title": "Combustible"
+      },
+      {
+        "field": "PrecioPromedio",
+        "type": "quantitative",
+        "title": "Precio mensual",
+        "format": ".3f"
+      }
+    ]
+  }
+}
