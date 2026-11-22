@@ -1,0 +1,60 @@
+table dim_mes
+	lineageTag: 0fc3654c-40d3-484f-8f97-04fb04f9ceaf
+	sourceLineageTag: [gold].[dim_mes]
+
+	column fecha_mes
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 093dad97-3f23-42d1-aa65-3e36e30497b1
+		sourceLineageTag: fecha_mes
+		summarizeBy: none
+		sourceColumn: fecha_mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column anio
+		dataType: int64
+		formatString: 0
+		lineageTag: fe65a752-9a6e-4919-89db-56758111380c
+		sourceLineageTag: anio
+		summarizeBy: none
+		sourceColumn: anio
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes
+		dataType: int64
+		formatString: 0
+		lineageTag: 26fc067d-1a50-4716-965c-e26cb2162418
+		sourceLineageTag: mes
+		summarizeBy: none
+		sourceColumn: mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column etiqueta_mes
+		dataType: string
+		lineageTag: 223efe2d-b947-4b0c-88d5-3a460299fb02
+		sourceLineageTag: etiqueta_mes
+		summarizeBy: none
+		sourceColumn: etiqueta_mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column trimestre
+		dataType: int64
+		formatString: 0
+		lineageTag: 7453c909-457a-4b5c-b3c5-4b6fc8fa5454
+		sourceLineageTag: trimestre
+		summarizeBy: none
+		sourceColumn: trimestre
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_mes = entity
+		mode: directLake
+		source
+			entityName: dim_mes
+			schemaName: gold
+			expressionSource: 'DirectLake - LH_PreciosCombustibles'
+

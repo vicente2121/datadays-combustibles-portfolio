@@ -1,0 +1,131 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Copiar_EIA_Bronze",
+        "type": "Copy",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 2,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": true,
+          "secureInput": true
+        },
+        "typeProperties": {
+          "source": {
+            "type": "RestSource",
+            "httpRequestTimeout": "00:03:00",
+            "requestInterval": "00.00:00:00.010",
+            "requestMethod": "GET",
+            "paginationRules": {
+              "supportRFC5988": "true"
+            },
+            "datasetSettings": {
+              "annotations": [],
+              "type": "RestResource",
+              "typeProperties": {
+                "relativeUrl": "v2/petroleum/pri/gnd/data/?api_key=@{pipeline().parameters.eia_api_key}&frequency=weekly&data[0]=value&facets[series][]=EMM_EPMR_PTE_NUS_DPG&facets[series][]=EMD_EPD2D_PTE_NUS_DPG&start=2024-01-01&length=500"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "b2d3095b-49d0-4f91-af0d-ac18c7077892"
+              }
+            }
+          },
+          "sink": {
+            "type": "JsonSink",
+            "storeSettings": {
+              "type": "LakehouseWriteSettings"
+            },
+            "formatSettings": {
+              "type": "JsonWriteSettings"
+            },
+            "datasetSettings": {
+              "annotations": [],
+              "connectionSettings": {
+                "name": "LH_PreciosCombustibles",
+                "properties": {
+                  "annotations": [],
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "workspaceId": "0245bb51-e0d1-40f1-b071-fcbbf1d7b155",
+                    "artifactId": "3130a9b4-c65e-427c-8cb3-c92c25d1aff4",
+                    "rootFolder": "Files"
+                  },
+                  "externalReferences": {
+                    "connection": "daae6e8d-f9e5-4b7b-b3dc-bcb447b75fee"
+                  }
+                }
+              },
+              "type": "Json",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "fileName": {
+                    "value": "precios_@{pipeline().RunId}.json",
+                    "type": "Expression"
+                  },
+                  "folderPath": "bronze/eia"
+                }
+              },
+              "schema": {}
+            }
+          },
+          "enableStaging": false
+        }
+      },
+      {
+        "name": "Procesar_y_deduplicar_Silver",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "Copiar_EIA_Bronze",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "6416e872-f704-4fae-9cbc-60738619df46",
+          "workspaceId": "0245bb51-e0d1-40f1-b071-fcbbf1d7b155"
+        }
+      },
+      {
+        "name": "Construir_Gold_PowerBI",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "Procesar_y_deduplicar_Silver",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "432b5ba7-bb2f-4ba1-a336-5996817a372d",
+          "workspaceId": "0245bb51-e0d1-40f1-b071-fcbbf1d7b155"
+        }
+      }
+    ],
+    "parameters": {
+      "eia_api_key": {
+        "type": "string"
+      }
+    }
+  }
+}

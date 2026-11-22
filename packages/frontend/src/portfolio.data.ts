@@ -8,6 +8,7 @@ export const caseStudy = {
   intro: 'Un histórico reproducible de gasolina y diésel de la EIA: ingesta REST, Silver idempotente, resúmenes Gold y análisis en Direct Lake.',
   disclosure: 'Portafolio documental. Los precios del informe original dependen de la ejecución y no se muestran aquí en directo.',
   sourceUrl: `${source}/tree/main/${path}`,
+  reportUrl: 'https://app.fabric.microsoft.com/groups/0245bb51-e0d1-40f1-b071-fcbbf1d7b155/reports/2410449a-d0d7-448d-9dd2-31c1d92a18f6',
   flow: 'EIA API → BRONZE → SILVER → GOLD → POWER BI',
   metrics: [
     { value: '2', label: 'series de combustible analizadas' },
@@ -31,8 +32,9 @@ export const caseStudy = {
     { question: '¿Qué ocurre al repetir la ingesta?', answer: 'Bronze añade una nueva evidencia; Silver conserva una observación por serie y fecha.' },
     { question: '¿Se puede rastrear el origen?', answer: 'El JSON por RunId permite revisar la respuesta que alimentó la transformación.' },
   ],
-  limit: 'La clave de la API EIA es personal y no forma parte del repositorio. El JSON incluido es una respuesta de ejemplo; una nueva ejecución puede tener más semanas. Las plantillas de pipeline y modelo contienen identificadores que deben sustituirse en cada réplica.',
+  limit: 'La clave de la API EIA es personal y no forma parte del repositorio. El informe publicado usa por ahora el JSON de ejemplo incluido; una ingesta viva puede incorporar más semanas. Las plantillas originales conservan marcadores para nuevas réplicas.',
   artifacts: [
+    { title: 'Informe en Fabric', description: 'Histórico y evolución sobre el modelo publicado', href: 'https://app.fabric.microsoft.com/groups/0245bb51-e0d1-40f1-b071-fcbbf1d7b155/reports/2410449a-d0d7-448d-9dd2-31c1d92a18f6', kind: 'repo' },
     { title: 'Guía ilustrada', description: 'Pasos de la clase y comprobaciones', href: `${source}/blob/main/${path}/docs/guia-clase-02.md`, kind: 'guide' },
     { title: 'Notebooks', description: 'Procesamiento Silver y agregados Gold', href: `${source}/tree/main/${path}/notebooks`, kind: 'code' },
     { title: 'Pipeline', description: 'Plantilla Copy REST → Silver → Gold', href: `${source}/tree/main/${path}/pipelines`, kind: 'code' },

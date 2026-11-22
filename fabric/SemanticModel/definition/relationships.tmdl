@@ -1,0 +1,16 @@
+relationship 9add27df-b841-dfe6-b6cc-31f741778f68
+	fromColumn: fact_precios_mensuales.serie_eia
+	toColumn: dim_combustible.serie_eia
+
+relationship 986cde29-bf13-555d-4ba1-ae204ea0d68a
+	fromColumn: fact_precios_mensuales.fecha_mes
+	toColumn: dim_mes.fecha_mes
+
+relationship c4412d2b-222a-a30a-a2bf-7c4fc0f07817
+	fromColumn: fact_ultimo_precio.serie_eia
+	toColumn: dim_combustible.serie_eia
+
+relationship 75970240-c301-490b-90da-6927307bc3c9
+	fromColumn: precios_combustibles_historico.serie_eia
+	toColumn: dim_combustible.serie_eia
+
